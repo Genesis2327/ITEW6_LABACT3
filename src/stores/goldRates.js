@@ -25,6 +25,7 @@ function loadSavedRates() {
 
 export const useGoldRatesStore = defineStore('goldRates', () => {
   const ratesByKarat = ref(loadSavedRates())
+  const lastUpdated = ref(new Date())
 
   const purities = computed(() => [
     { karat: 24, label: '24K', description: 'Pure gold (99.9%)' },
@@ -42,10 +43,15 @@ export const useGoldRatesStore = defineStore('goldRates', () => {
 
   function setRate(karat, ratePHP) {
     ratesByKarat.value[karat] = Math.max(0, Number(ratePHP))
+    lastUpdated.value = new Date()
     try {
       localStorage.setItem(RATE_STORAGE_KEY, JSON.stringify(ratesByKarat.value))
     } catch {}
   }
 
-  return { ratesByKarat, purities, getRate, setRate }
+  function touchLastUpdated() {
+    lastUpdated.value = new Date()
+  }
+
+  return { ratesByKarat, lastUpdated, purities, getRate, setRate, touchLastUpdated }
 })

@@ -3,7 +3,7 @@
     <div class="auth-card app-card">
       <div class="auth-header">
         <div class="logo-icon">◆</div>
-        <h1>Philippines Gold Calculator</h1>
+        <h1>Philippines Gold Rate Live and Calculator</h1>
         <p class="subtitle">Before access you must register. Create your account.</p>
       </div>
       <form @submit.prevent="onSubmit" class="auth-form">

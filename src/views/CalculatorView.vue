@@ -2,10 +2,14 @@
   <div class="calculator-page">
     <header class="header">
       <div class="header-inner">
-        <RouterLink to="/" class="brand">
+        <h1 class="brand">
           <span class="brand-icon">◆</span>
-          Gold Calculator
-        </RouterLink>
+          Philippines Gold Rate Live and Calculator
+        </h1>
+        <nav class="nav">
+          <RouterLink to="/" class="nav-link" :class="{ active: $route.path === '/' }">Dashboard</RouterLink>
+          <RouterLink to="/calculator" class="nav-link" :class="{ active: $route.path === '/calculator' }">Calculator</RouterLink>
+        </nav>
         <div class="user-menu">
           <span class="user-name">{{ auth.currentUser?.name }}</span>
           <button class="btn-secondary btn-sm" @click="auth.logout()">Log out</button>
@@ -15,7 +19,7 @@
     <main class="main">
       <h1 class="page-title">Jewelry Final Price Calculator</h1>
       <p class="page-desc">
-        Philippines gold rate × grams + making charge, then +12% tax.
+        PH gold rate live: <strong>Gold rate × grams + making charge</strong> (total first) <strong>+ 12% tax</strong> = final gold price.
       </p>
 
       <!-- Purity tabs -->
@@ -144,26 +148,46 @@ function finalPrice(karat) {
   box-shadow: var(--shadow);
 }
 .header-inner {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 .brand {
   color: var(--white);
-  text-decoration: none;
   font-weight: 600;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.brand:hover {
-  color: var(--gold-light);
-}
 .brand-icon {
   color: var(--gold-light);
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.nav-link {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+.nav-link:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.15);
+}
+.nav-link.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.2);
 }
 .user-menu {
   display: flex;
