@@ -60,7 +60,7 @@ function onSubmit() {
   const result = auth.login(email.value.trim(), password.value)
   loading.value = false
   if (result.ok) {
-    router.push({ name: 'Home' })
+    router.push({ name: 'Dashboard' })
   } else {
     error.value = result.message
   }

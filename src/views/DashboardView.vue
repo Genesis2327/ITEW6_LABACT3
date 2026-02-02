@@ -12,7 +12,7 @@
         </nav>
         <div class="user-menu">
           <span class="user-name">{{ auth.currentUser?.name }}</span>
-          <button class="btn-secondary btn-sm" @click="auth.logout()">Log out</button>
+          <button class="btn-secondary btn-sm" @click="handleLogout">Log out</button>
         </div>
       </div>
     </header>
@@ -82,11 +82,18 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useAuthStore } from '../stores/auth'
 import { useGoldRatesStore } from '../stores/goldRates'
 
+const router = useRouter()
 const auth = useAuthStore()
 const goldRates = useGoldRatesStore()
+
+function handleLogout() {
+  auth.logout()
+  router.push({ name: 'Login' })
+}
 
 const now = ref('')
 const secondsSinceUpdate = ref(0)
