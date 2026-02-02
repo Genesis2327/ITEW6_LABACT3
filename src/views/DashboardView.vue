@@ -12,7 +12,7 @@
         </nav>
         <div class="user-menu">
           <span class="user-name">{{ auth.currentUser?.name }}</span>
-          <button class="btn-secondary btn-sm" @click="handleLogout">Log out</button>
+          <button class="btn-secondary btn-sm btn-logout" @click="handleLogout">Log out</button>
         </div>
       </div>
     </header>
@@ -237,8 +237,8 @@ onUnmounted(() => {
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.75rem;
-  background: var(--green-100);
-  color: var(--green-800);
+  background: var(--red-500);
+  color: var(--white);
   border-radius: 9999px;
   font-size: 0.8rem;
   font-weight: 700;
@@ -247,7 +247,7 @@ onUnmounted(() => {
 .pulse {
   width: 6px;
   height: 6px;
-  background: var(--green-600);
+  background: var(--white);
   border-radius: 50%;
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -364,8 +364,8 @@ onUnmounted(() => {
   color: var(--gray-500);
 }
 .badge.live {
-  background: var(--green-200);
-  color: var(--green-800);
+  background: var(--red-500);
+  color: var(--white);
   font-size: 0.7rem;
   margin-left: 0.35rem;
 }

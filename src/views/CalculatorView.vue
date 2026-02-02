@@ -12,7 +12,7 @@
         </nav>
         <div class="user-menu">
           <span class="user-name">{{ auth.currentUser?.name }}</span>
-          <button class="btn-secondary btn-sm" @click="handleLogout">Log out</button>
+          <button class="btn-secondary btn-sm btn-logout" @click="handleLogout">Log out</button>
         </div>
       </div>
     </header>
